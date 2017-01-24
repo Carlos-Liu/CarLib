@@ -54,7 +54,7 @@ namespace IO.Tests
             Thread.Sleep(100);
             calc.ProgressChanged(2000, 100000);
 
-            // use 50 millisecond to copy 1000 bytes
+            // use 20 millisecond to copy 1000 bytes
             Thread.Sleep(20);
             calc.ProgressChanged(3000, 100000);
 
@@ -62,7 +62,7 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(5.82, actualRemainingTime.TotalSeconds);
+            AssertSecondsWithTolerance(5.82, actualRemainingTime.TotalSeconds, 1);
         }
 
         [TestMethod]
@@ -255,10 +255,10 @@ namespace IO.Tests
             AssertSecondsWithTolerance(3, actualRemainingTime.TotalSeconds);
         }
 
-        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds)
+        // default tolerance is 0.5 second
+        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds, double toleranceSeconds = 0.5)
         {
-            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < 2 seconds is acceptable
-            const double toleranceSeconds = 0.5;
+            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < toleranceSeconds seconds is acceptable
 
             var diff = Math.Abs(expectedSeconds - actualSeconds);
             Assert.IsTrue(diff < toleranceSeconds, 
