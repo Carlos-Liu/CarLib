@@ -261,7 +261,8 @@ namespace IO.Tests
             const double toleranceSeconds = 0.5;
 
             var diff = Math.Abs(expectedSeconds - actualSeconds);
-            Assert.IsTrue(diff < toleranceSeconds);
+            Assert.IsTrue(diff < toleranceSeconds, 
+                string.Format("The actual difference value is {0}, and actual used {1} second(s).", diff, actualSeconds));
         }
     }
 }
