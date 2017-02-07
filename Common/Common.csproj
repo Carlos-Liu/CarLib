@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DateTimeEx.cs" />
     <Compile Include="Extensions\TimeSpanEx.cs" />
     <Compile Include="FileSizeFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
