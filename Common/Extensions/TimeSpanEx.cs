@@ -18,11 +18,6 @@ namespace CarLib.Common.Extensions
         /// <returns>The user friendly display string.</returns>
         public static string ToReadableString(this TimeSpan timespan)
         {
-            if (timespan == TimeSpan.MaxValue)
-            {
-                // If it is maximum timespan value, then just report as 'Calculating...'
-                return Resources.TimeSpan_PromptStringForMaxTimeSpan;
-            }
 
             var totalSeconds = timespan.TotalSeconds;
 
@@ -71,15 +66,14 @@ namespace CarLib.Common.Extensions
         /// </summary>
         /// <param name="timespan">The TimeSpan object to get friendly string.</param>
         /// <returns>The friendly formated display string for time estimation.</returns>
-        public static string ToTimeEstimationString(this TimeSpan timespan)
+        public static string ToTimeEstimationString(this TimeSpan? timespan)
         {
-            var estimationString = ToReadableString(timespan);
-
-            if (timespan == TimeSpan.MaxValue)
+            if (!timespan.HasValue)
             {
-                return estimationString;
+                return Resources.TimeSpan_PromptStringForMaxTimeSpan;
             }
 
+            var estimationString = ToReadableString(timespan.Value);
             return Resources.TimeSpan_TimeEstimation_AboutPrefix + estimationString;
         }
     }

@@ -61,7 +61,7 @@ namespace CarLib.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to B.
+        ///   Looks up a localized string similar to bytes.
         /// </summary>
         internal static string FileSize_Unit_Byte {
             get {

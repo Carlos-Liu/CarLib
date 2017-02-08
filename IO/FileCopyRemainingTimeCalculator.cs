@@ -68,26 +68,30 @@ namespace CarLib.IO
         /// <summary>
         /// Evaluate the remaining time.
         /// </summary>
-        /// <returns>The evaluated remaining time.</returns>
-        public TimeSpan EvaluateRemainingTime()
+        /// <returns>Return the evaluated remaining time. And return null if cannot evaluate the remaining time.</returns>
+        public TimeSpan? EvaluateRemainingTime()
         {
-            double remainingSeconds = 0;
+            double? remainingSeconds = null;
             if (TotalFileBytesToCopy > TotalBytesCopied)
             {
                 var alreadyCopiedBytesWithTiming = TotalBytesCopied - CopiedBytesForFirstTime;
                 if (alreadyCopiedBytesWithTiming == 0)
                 {
-                    return TimeSpan.MaxValue;
+                    return null;
                 }
 
                 // remaining seconds = (TotalTimeTakenInSeconds / alreadyCopiedBytesWithTiming) * (TotalFileBytesToCopy - TotalBytesCopied);
                 remainingSeconds = TotalTimeTakenInSeconds * (TotalFileBytesToCopy - TotalBytesCopied) / alreadyCopiedBytesWithTiming;
             }
-            var timeSpan = TimeSpan.FromSeconds(remainingSeconds);
 
+            if (remainingSeconds.HasValue)
+            {
+                var timeSpan = TimeSpan.FromSeconds(remainingSeconds.Value);
             return timeSpan;
         }
 
+            return null;
+        }
         /// <summary>
         /// Pause the timing.
         /// <remarks>Resume must be called in pair.</remarks>

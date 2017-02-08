@@ -165,18 +165,6 @@ namespace Common.Tests.Extensions
             Assert.AreEqual("2 Day(s) 3 Hour(s) 4 Minute(s)", actual);
         }
 
-        [TestMethod]
-        public void ToReadableString_MaxTimeSpan_ShowCalculating()
-        {
-            // Arrange
-            var timespan = TimeSpan.MaxValue;
-
-            // Act
-            var actual = timespan.ToReadableString();
-
-            // Assert
-            Assert.AreEqual("Calculating...", actual);
-        }
 
         #endregion
 
@@ -186,7 +174,7 @@ namespace Common.Tests.Extensions
         public void ToTimeEstimationString_LessThan1Minute_AboutPrefixIsAdded()
         {
             // Arrange
-            var timespan = TimeSpan.FromSeconds(59);
+            TimeSpan? timespan = TimeSpan.FromSeconds(59);
 
             // Act
             var actual = timespan.ToTimeEstimationString();
@@ -196,13 +184,10 @@ namespace Common.Tests.Extensions
         }
 
         [TestMethod]
-        public void ToTimeEstimationString_MaxTimeSpan_ShowCalculating()
+        public void ToTimeEstimationString_NullTimeSpan_ShowCalculating()
         {
-            // Arrange
-            var timespan = TimeSpan.MaxValue;
-
-            // Act
-            var actual = timespan.ToTimeEstimationString();
+            // Arrange & Act
+            var actual = ((TimeSpan?) null).ToTimeEstimationString();
 
             // Assert
             Assert.AreEqual("Calculating...", actual);

@@ -13,7 +13,7 @@ namespace Common.Tests
             var actual = FileSizeFormatter.GetReadableFileSize(0);
 
             // Assert
-            Assert.AreEqual("0 B", actual);
+            Assert.AreEqual("0 bytes", actual);
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace Common.Tests
             var actual = FileSizeFormatter.GetReadableFileSize(1);
 
             // Assert
-            Assert.AreEqual("1 B", actual);
+            Assert.AreEqual("1 bytes", actual);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace Common.Tests
             var actual = FileSizeFormatter.GetReadableFileSize(1023);
 
             // Assert
-            Assert.AreEqual("1023 B", actual);
+            Assert.AreEqual("1023 bytes", actual);
         }
 
         [TestMethod]

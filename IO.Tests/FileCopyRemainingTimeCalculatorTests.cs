@@ -9,7 +9,7 @@ namespace IO.Tests
     public class FileCopyRemainingTimeCalculatorTests
     {
         [TestMethod]
-        public void EvaluateRemainingTime_ByDefault_IsZero()
+        public void EvaluateRemainingTime_ByDefault_IsNull()
         {
             // Arrange
             var calc = new FileCopyRemainingTimeCalculator();
@@ -18,7 +18,7 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            Assert.AreEqual(0, actualRemainingTime.TotalSeconds);
+            Assert.IsNull(actualRemainingTime);
         }
 
         #region Without pausing/resuming
@@ -39,7 +39,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(8, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(8, actualRemainingTime.Value.TotalSeconds);
         }
 
         [TestMethod]
@@ -54,7 +55,7 @@ namespace IO.Tests
             Thread.Sleep(100);
             calc.ProgressChanged(2000, 100000);
 
-            // use 20 millisecond to copy 1000 bytes
+            // use 50 millisecond to copy 1000 bytes
             Thread.Sleep(20);
             calc.ProgressChanged(3000, 100000);
 
@@ -62,7 +63,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(5.82, actualRemainingTime.TotalSeconds, 1);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(5.82, actualRemainingTime.Value.TotalSeconds);
         }
 
         [TestMethod]
@@ -85,7 +87,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(7, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(7, actualRemainingTime.Value.TotalSeconds);
         }
 
         [TestMethod]
@@ -108,7 +111,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(1.6, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(1.6, actualRemainingTime.Value.TotalSeconds);
         }
 
         #endregion
@@ -136,7 +140,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(8, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(8, actualRemainingTime.Value.TotalSeconds);
         }
 
         [TestMethod]
@@ -174,7 +179,8 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(7, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(7, actualRemainingTime.Value.TotalSeconds);
         }
 
         [TestMethod]
@@ -201,13 +207,14 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(1.6, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(1.6, actualRemainingTime.Value.TotalSeconds);
         }
 
         #endregion
 
         [TestMethod]
-        public void Reset_EvaluateTimeJustAfterReset_IsZero()
+        public void Reset_EvaluateTimeJustAfterReset_IsNull()
         {
             // Arrange
             var calc = new FileCopyRemainingTimeCalculator();
@@ -223,7 +230,7 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            Assert.AreEqual(0, actualRemainingTime.TotalSeconds);
+            Assert.IsNull(actualRemainingTime);
         }
 
         [TestMethod]
@@ -252,17 +259,17 @@ namespace IO.Tests
             var actualRemainingTime = calc.EvaluateRemainingTime();
 
             // Assert
-            AssertSecondsWithTolerance(3, actualRemainingTime.TotalSeconds);
+            Assert.IsNotNull(actualRemainingTime);
+            AssertSecondsWithTolerance(3, actualRemainingTime.Value.TotalSeconds);
         }
 
-        // default tolerance is 0.5 second
-        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds, double toleranceSeconds = 0.5)
+        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds)
         {
-            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < toleranceSeconds seconds is acceptable
+            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < 2 seconds is acceptable
+            const double toleranceSeconds = 0.5;
 
             var diff = Math.Abs(expectedSeconds - actualSeconds);
-            Assert.IsTrue(diff < toleranceSeconds, 
-                string.Format("The actual difference value is {0}, and actual used {1} second(s).", diff, actualSeconds));
+            Assert.IsTrue(diff < toleranceSeconds);
         }
     }
 }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FileSize_Unit_Byte" xml:space="preserve">
-    <value>B</value>
+    <value>bytes</value>
   </data>
   <data name="FileSize_Unit_GB" xml:space="preserve">
     <value>GB</value>
