@@ -64,7 +64,7 @@ namespace IO.Tests
 
             // Assert
             Assert.IsNotNull(actualRemainingTime);
-            AssertSecondsWithTolerance(5.82, actualRemainingTime.Value.TotalSeconds);
+            AssertSecondsWithTolerance(5.82, actualRemainingTime.Value.TotalSeconds, 1);
         }
 
         [TestMethod]
@@ -263,13 +263,14 @@ namespace IO.Tests
             AssertSecondsWithTolerance(3, actualRemainingTime.Value.TotalSeconds);
         }
 
-        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds)
+        // default tolerance is 0.5 second
+        private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds, double toleranceSeconds = 0.5)
         {
-            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < 2 seconds is acceptable
-            const double toleranceSeconds = 0.5;
+            // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < toleranceSeconds seconds is acceptable
 
             var diff = Math.Abs(expectedSeconds - actualSeconds);
-            Assert.IsTrue(diff < toleranceSeconds);
+            Assert.IsTrue(diff < toleranceSeconds,
+                string.Format("The actual difference value is {0}, and actual used {1} second(s).", diff, actualSeconds));
         }
     }
 }
