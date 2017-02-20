@@ -106,6 +106,24 @@ namespace CarLib.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to abort now?.
+        /// </summary>
+        internal static string MsgBox_Msg_AbortConfirmationText {
+            get {
+                return ResourceManager.GetString("MsgBox_Msg_AbortConfirmationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abort Confirmation.
+        /// </summary>
+        internal static string MsgBox_Title_AbortConfirmation {
+            get {
+                return ResourceManager.GetString("MsgBox_Title_AbortConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  Day(s).
         /// </summary>
         internal static string TimeSpan_DisplayUnit_Day {
@@ -151,11 +169,11 @@ namespace CarLib.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About .
+        ///   Looks up a localized string similar to About {0}.
         /// </summary>
-        internal static string TimeSpan_TimeEstimation_AboutPrefix {
+        internal static string TimeSpan_TimeEstimation_AboutPrompt_1Arg {
             get {
-                return ResourceManager.GetString("TimeSpan_TimeEstimation_AboutPrefix", resourceCulture);
+                return ResourceManager.GetString("TimeSpan_TimeEstimation_AboutPrompt_1Arg", resourceCulture);
             }
         }
     }

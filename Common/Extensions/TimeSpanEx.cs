@@ -74,7 +74,7 @@ namespace CarLib.Common.Extensions
             }
 
             var estimationString = ToReadableString(timespan.Value);
-            return Resources.TimeSpan_TimeEstimation_AboutPrefix + estimationString;
+            return string.Format(Resources.TimeSpan_TimeEstimation_AboutPrompt_1Arg, estimationString);
         }
     }
 }

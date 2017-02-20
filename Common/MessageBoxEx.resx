@@ -117,43 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FileSize_Unit_Byte" xml:space="preserve">
-    <value>bytes</value>
-  </data>
-  <data name="FileSize_Unit_GB" xml:space="preserve">
-    <value>GB</value>
-  </data>
-  <data name="FileSize_Unit_KB" xml:space="preserve">
-    <value>KB</value>
-  </data>
-  <data name="FileSize_Unit_MB" xml:space="preserve">
-    <value>MB</value>
-  </data>
-  <data name="FileSize_Unit_TB" xml:space="preserve">
-    <value>TB</value>
-  </data>
-  <data name="MsgBox_Msg_AbortConfirmationText" xml:space="preserve">
-    <value>Are you sure to abort now?</value>
-  </data>
-  <data name="MsgBox_Title_AbortConfirmation" xml:space="preserve">
-    <value>Abort Confirmation</value>
-  </data>
-  <data name="TimeSpan_DisplayUnit_Day" xml:space="preserve">
-    <value> Day(s)</value>
-  </data>
-  <data name="TimeSpan_DisplayUnit_Hour" xml:space="preserve">
-    <value> Hour(s)</value>
-  </data>
-  <data name="TimeSpan_DisplayUnit_Minute" xml:space="preserve">
-    <value> Minute(s)</value>
-  </data>
-  <data name="TimeSpan_DisplayUnit_Second" xml:space="preserve">
-    <value> Second(s)</value>
-  </data>
-  <data name="TimeSpan_PromptStringForMaxTimeSpan" xml:space="preserve">
-    <value>Calculating...</value>
-  </data>
-  <data name="TimeSpan_TimeEstimation_AboutPrompt_1Arg" xml:space="preserve">
-    <value>About {0}</value>
-  </data>
 </root>
