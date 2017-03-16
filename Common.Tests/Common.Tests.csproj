@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Extensions\DateTimeExTests.cs" />
+    <Compile Include="Extensions\StringExTests.cs" />
     <Compile Include="FileSizeFormatterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\TimeSpanExTests.cs" />
