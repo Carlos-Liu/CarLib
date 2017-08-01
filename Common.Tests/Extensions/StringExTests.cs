@@ -2,6 +2,7 @@
 using System.Threading;
 using CarLib.Common.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+// ReSharper disable ExpressionIsAlwaysNull
 
 namespace Common.Tests.Extensions
 {
@@ -16,7 +17,6 @@ namespace Common.Tests.Extensions
             string right = null;
 
             // Act
-            // ReSharper disable once ExpressionIsAlwaysNull
             bool isEqual = left.EqualOrdinal(right);
 
             // Assert
@@ -108,6 +108,7 @@ namespace Common.Tests.Extensions
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("tr-TR");
 
             // Act
+            // ReSharper disable once UnusedVariable
             bool generalCompareResult = string.Equals("i", "I");
             // generalCompareResult will be False which should be True, this is the bug
 
