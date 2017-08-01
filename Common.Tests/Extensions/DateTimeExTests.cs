@@ -68,5 +68,61 @@ namespace Common.Tests.Extensions
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void AreClosed_TwoTimesAreSame_ReturnTrue()
+        {
+          // Arrange
+          var time1 = new DateTime(2017, 03, 30, 8, 0, 0);
+          var time2 = new DateTime(2017, 03, 30, 8, 0, 0);
+
+          // Act
+          bool isClosed = time1.AreClosed(time2);
+
+          // Assert
+          Assert.IsTrue(isClosed);
+        }
+
+        [TestMethod]
+        public void AreClosed_TimesAreDiffWith2SecondsAndToleranceIs2Seconds_ReturnTrue()
+        {
+          // Arrange
+          var time1 = new DateTime(2017, 03, 30, 8, 0, 0);
+          var time2 = new DateTime(2017, 03, 30, 8, 0, 2);
+
+          // Act
+          bool isClosed = time1.AreClosed(time2, 2000);
+
+          // Assert
+          Assert.IsTrue(isClosed);
+        }
+
+        [TestMethod]
+        public void AreClosed_TimesAreDiffWith2SecondsAndToleranceIsLessThan2Seconds_ReturnFalse()
+        {
+          // Arrange
+          var time1 = new DateTime(2017, 03, 30, 8, 0, 2);
+          var time2 = new DateTime(2017, 03, 30, 8, 0, 0);
+
+          // Act
+          bool isClosed = time1.AreClosed(time2, 1999);
+
+          // Assert
+          Assert.IsFalse(isClosed);
+        }
+
+        [TestMethod]
+        public void AreClosed_TimesAreDiffWith2SecondsAndToleranceIsLargerThan2Seconds_ReturnTrue()
+        {
+          // Arrange
+          var time1 = new DateTime(2017, 03, 30, 8, 0, 2);
+          var time2 = new DateTime(2017, 03, 30, 8, 0, 0);
+
+          // Act
+          bool isClosed = time1.AreClosed(time2, 2001);
+
+          // Assert
+          Assert.IsTrue(isClosed);
+        }
     }
 }

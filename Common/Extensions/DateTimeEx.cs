@@ -39,5 +39,22 @@ namespace CarLib.Common.Extensions
                       .AddMinutes(59)
                       .AddSeconds(59);
         }
+
+        /// <summary>
+        /// Check if the specified time are closed or not.
+        /// </summary>
+        /// <param name="time1">The date time to be compared.</param>
+        /// <param name="time2">The date time to be compared.</param>
+        /// <param name="toleranceInMilliSeconds">The tolerance value in millisecond.</param>
+        /// <returns>
+        /// True: If the two difference between the times is less than or equal to the tolerance value.
+        /// False: If the two difference between the times is greater than the tolerance value.</returns>
+        public static bool AreClosed(this DateTime time1, DateTime time2, long toleranceInMilliSeconds = 0)
+        {
+          // 10,000 ticks in a millisecond, 10 million ticks in a second.
+          long threshold = 10000 * toleranceInMilliSeconds;
+          var delta = time1.Ticks - time2.Ticks;
+          return Math.Abs(delta) <= threshold;
+        }
     }
 }

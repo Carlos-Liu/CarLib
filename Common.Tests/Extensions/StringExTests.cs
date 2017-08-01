@@ -16,6 +16,7 @@ namespace Common.Tests.Extensions
             string right = null;
 
             // Act
+            // ReSharper disable once ExpressionIsAlwaysNull
             bool isEqual = left.EqualOrdinal(right);
 
             // Assert

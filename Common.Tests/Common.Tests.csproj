@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BytesStringConverterTests.cs" />
     <Compile Include="Extensions\DateTimeExTests.cs" />
     <Compile Include="Extensions\StringExTests.cs" />
     <Compile Include="FileSizeFormatterTests.cs" />
