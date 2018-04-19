@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessRuleUtils.cs" />
+    <Compile Include="DriveAndPathMappingUtil.cs" />
     <Compile Include="ExplorerUtilities.cs" />
     <Compile Include="FileCopyRemainingTimeCalculator.cs" />
     <Compile Include="PathUtilities.cs" />
