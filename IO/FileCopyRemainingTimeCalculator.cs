@@ -9,13 +9,13 @@ namespace CarLib.IO
     /// </summary>
     public class FileCopyRemainingTimeCalculator
     {
-        private readonly Stopwatch _Watch = new Stopwatch();
-        private readonly Stopwatch _PauseWatch = new Stopwatch();
+        private readonly Stopwatch _watch = new Stopwatch();
+        private readonly Stopwatch _pauseWatch = new Stopwatch();
         private bool IsFirstProgress { get; set; }
         private long TotalBytesCopied { get; set; }
         private long TotalFileBytesToCopy { get; set; }
         // The total time taken to do coping. 
-        private double TotalTimeTakenInSeconds { get { return _Watch.Elapsed.TotalSeconds - TotalPausedTimeInSeconds; } }
+        private double TotalTimeTakenInSeconds { get { return _watch.Elapsed.TotalSeconds - TotalPausedTimeInSeconds; } }
         // The total paused time in seconds
         private double TotalPausedTimeInSeconds { get; set; }
 
@@ -35,7 +35,7 @@ namespace CarLib.IO
         {
             TotalBytesCopied = 0;
 
-            _Watch.Start();
+            _watch.Start();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace CarLib.IO
             TotalBytesCopied = totalCopiedSizeBytes;
             if (TotalBytesCopied == totalFileSizeBytes)
             {
-                _Watch.Stop();
+                _watch.Stop();
             }
         }
 
@@ -98,7 +98,7 @@ namespace CarLib.IO
         /// </summary>
         public void Pause()
         {
-            _PauseWatch.Restart();
+            _pauseWatch.Restart();
         }
 
         /// <summary>
@@ -106,8 +106,8 @@ namespace CarLib.IO
         /// </summary>
         public void Resume()
         {
-            _PauseWatch.Stop();
-            TotalPausedTimeInSeconds += _PauseWatch.Elapsed.TotalSeconds;
+            _pauseWatch.Stop();
+            TotalPausedTimeInSeconds += _pauseWatch.Elapsed.TotalSeconds;
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace CarLib.IO
         public void Reset()
         {
             IsFirstProgress = true;
-            _Watch.Reset();
+            _watch.Reset();
             TotalBytesCopied = 0;
             TotalFileBytesToCopy = 0;
             CopiedBytesForFirstTime = 0;

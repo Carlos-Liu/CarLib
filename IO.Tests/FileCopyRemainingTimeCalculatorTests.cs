@@ -264,6 +264,7 @@ namespace IO.Tests
         }
 
         // default tolerance is 0.5 second
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertSecondsWithTolerance(double expectedSeconds, double actualSeconds, double toleranceSeconds = 0.5)
         {
             // Considerate the coding execution performance, | expectedSeconds - actualSeconds | < toleranceSeconds seconds is acceptable

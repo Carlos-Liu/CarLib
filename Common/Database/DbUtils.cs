@@ -12,7 +12,7 @@
     /// <returns>The clause string which is escaped for SQL query.</returns>
     public static string EscapeForLikeSql(string param)
     {
-      if (string.IsNullOrEmpty(param)) return null;
+      if (string.IsNullOrEmpty(param)) return "";
 
       return param.Replace("[", "[[]")
                   .Replace("%", "[%]")
