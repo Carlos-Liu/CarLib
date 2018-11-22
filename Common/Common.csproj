@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BytesStringConverter.cs" />
+    <Compile Include="CultureInfoUtils.cs" />
     <Compile Include="Database\DbUtils.cs" />
     <Compile Include="DateTimeUtils.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />
