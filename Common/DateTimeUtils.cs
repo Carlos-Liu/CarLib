@@ -21,7 +21,7 @@ namespace CarLib.Common
     {
       if (string.IsNullOrWhiteSpace(dateTimeString))
       {
-        throw new ArgumentException("Invalid date time string.", nameof(dateTimeString));
+        throw new ArgumentException("Invalid date time string.", "dateTimeString");
       }
 
       return XmlConvert.ToDateTime(dateTimeString, XmlDateTimeSerializationMode.Utc);
