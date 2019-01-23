@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{49EDF427-DCA5-479D-9A34-B36DD092C126}"
 EndProject
@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AAA387
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUtilities", "WpfUtilities\WpfUtilities.csproj", "{2F1D3239-F635-4786-96F2-0A6C43F4916C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carlib.Web", "Carlib.Web\Carlib.Web.csproj", "{2089ABA7-A574-49D2-B615-59D4F0EB053C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,8 +49,15 @@ Global
 		{2F1D3239-F635-4786-96F2-0A6C43F4916C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F1D3239-F635-4786-96F2-0A6C43F4916C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F1D3239-F635-4786-96F2-0A6C43F4916C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2089ABA7-A574-49D2-B615-59D4F0EB053C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2089ABA7-A574-49D2-B615-59D4F0EB053C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2089ABA7-A574-49D2-B615-59D4F0EB053C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2089ABA7-A574-49D2-B615-59D4F0EB053C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBED1D7D-C2CC-485C-99E4-765C89ED4B5C}
 	EndGlobalSection
 EndGlobal
